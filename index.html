@@ -8,24 +8,22 @@
     <title>画板</title>
 </head>
 <body>
-    <div id="canvas"></div>
+    <canvas id="canvas" height="100" width="100"></canvas>
     <script>
-        canvas.onclick = (e) => {
-            console.log(e.clientX) 
+        var canvas = document.getElementById('canvas');
+        //获取屏幕的宽高
+        canvas.width = document.documentElement.clientWidth
+        console.log(document.body.clientWidth)
+        canvas.height = document.documentElement.clientHeight
+        console.log(document.body.clientHeight)
+        //画线
+        let ctx = canvas.getContext('2d');
+        let painting = false
+        ctx.fillStyle = 'blue';
+        canvas.onmousemove = (e) => {
+            console.log(e.clientX)
             console.log(e.clientY)
-            //console调试大法
-            let div = document.createElement('div')
-            div.style.position = 'absolute'
-            div.style.left = e.clientX + 'px'
-            div.style.top = e.clientY + 'px'
-            div.style.width = '6px'
-            div.style.height = '6px'
-            div.style.margin = '-3px'
-            div.style.marginTop = '-3px'
-            div.style.borderRadius = '50%'
-            div.style.background = 'black'
-            canvas.appendChild(div)
-
+            ctx.fillRect(e.clientX -5 , e.clientY - 5 ,10,10);
         }
     </script>
 </body>
